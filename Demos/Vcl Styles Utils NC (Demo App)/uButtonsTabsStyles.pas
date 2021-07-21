@@ -5,14 +5,14 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Styles.NC, Vcl.ImgList, Vcl.ComCtrls,
-  Vcl.ExtCtrls, Vcl.StdCtrls, System.ImageList;
+  Vcl.ExtCtrls, Vcl.StdCtrls;
 
 type
   TFrmButtonsTabsStyle = class(TForm)
     ImageList1: TImageList;
     procedure FormCreate(Sender: TObject);
   private
-    NCControls : TNCControls;
+    NCControls: TNCControls;
   public
     { Public declarations }
   end;
@@ -23,7 +23,7 @@ implementation
 
 procedure TFrmButtonsTabsStyle.FormCreate(Sender: TObject);
 var
-  LNCControl : TNCButton;
+  LNCControl: TNCButton;
 begin
   NCControls := TNCControls.Create(Self);
   NCControls.Images      := ImageList1;

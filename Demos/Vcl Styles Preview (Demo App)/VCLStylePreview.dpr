@@ -9,6 +9,8 @@ uses
   Vcl.Themes,
   Windows,
   Vcl.Styles,
+  Vcl.Styles.Utils.Misc in '..\..\Common\Vcl.Styles.Utils.Misc.pas',
+  Vcl.Styles.Utils.Graphics in '..\..\Common\Vcl.Styles.Utils.Graphics.pas',
   Vcl.Styles.Ext in '..\..\Common\Vcl.Styles.Ext.pas';
 
 {$R *.res}
@@ -25,8 +27,8 @@ end;
 
 procedure LoadVCLStyles;
 var
-  f, s : string;
-  LFiles : TStringDynArray;
+  f, s: string;
+  LFiles: TStringDynArray;
 begin
   s:=ExtractFilePath(ParamStr(0));
   LFiles:=TDirectory.GetFiles(s, '*.vsf');

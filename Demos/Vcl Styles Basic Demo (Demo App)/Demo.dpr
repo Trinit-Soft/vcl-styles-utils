@@ -11,6 +11,7 @@ uses
   Vcl.Themes,
   Vcl.Styles,
   Vcl.Styles.Utils.Graphics in '..\..\Common\Vcl.Styles.Utils.Graphics.pas',
+  Vcl.Styles.Utils.Misc in '..\..\Common\Vcl.Styles.Utils.Misc.pas',
   Vcl.Styles.Ext in '..\..\Common\Vcl.Styles.Ext.pas',
   Vcl.Styles.Utils in '..\..\Common\Vcl.Styles.Utils.pas';
 
@@ -28,8 +29,8 @@ end;
 
 procedure LoadVCLStyles;
 var
-  f, s : string;
-  LFiles : TStringDynArray;
+  f, s: string;
+  LFiles: TStringDynArray;
 begin
   s:=ExtractFilePath(ParamStr(0));
   LFiles:=TDirectory.GetFiles(s, '*.vsf');

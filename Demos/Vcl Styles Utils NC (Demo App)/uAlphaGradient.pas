@@ -4,8 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Styles.NC, Vcl.ImgList, Vcl.StdCtrls,
-  System.ImageList;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Styles.NC, Vcl.ImgList, Vcl.StdCtrls;
 
 type
   TFrmAlphaGradient = class(TForm)
@@ -14,7 +13,7 @@ type
     procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
-    NCControls : TNCControls;
+    NCControls: TNCControls;
      procedure ButtonNCClick(Sender: TObject);
  public
     { Public declarations }
@@ -36,7 +35,7 @@ end;
 
 procedure TFrmAlphaGradient.FormCreate(Sender: TObject);
 var
- LNCControl : TNCControl;
+ LNCControl: TNCControl;
 begin
   NCControls := TNCControls.Create(Self);
   NCControls.Images      := ImageList1;
