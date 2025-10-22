@@ -14,7 +14,7 @@
 //
 //
 // Portions created by Mahdi Safsafi [SMP3]   e-mail SMP@LIVE.FR
-// Portions created by Rodrigo Ruz V. are Copyright (C) 2013-2021 Rodrigo Ruz V.
+// Portions created by Rodrigo Ruz V. are Copyright (C) 2013-2025 Rodrigo Ruz V.
 // All Rights Reserved.
 //
 // **************************************************************************************************
@@ -415,6 +415,7 @@ procedure TSysPopupStyleHook.DrawItem(Canvas: TCanvas; const Index: integer; con
 var
   LTextRect: TRect;
   DC: HDC;
+  LPixelsPerInch: Integer;
 
   procedure DrawSubMenu(const ItemRect: TRect);
   var
@@ -429,7 +430,7 @@ var
     if isDisabled in State then
       LSubMenuDetail := tmPopupSubMenuDisabled;
     LSubMenuDetails := StyleServices.GetElementDetails(LSubMenuDetail);
-    StyleServices.GetElementSize(DC, LSubMenuDetails, esActual, SubMenuSize);
+    StyleServices.GetElementSize(DC, LSubMenuDetails, esActual, SubMenuSize{$IF (CompilerVersion >=33)}, LPixelsPerInch{$IFEND});
     if not RightToLeft then
       LSubMenuRect := Rect(ItemRect.Right - SubMenuSize.cx, ItemRect.Top, ItemRect.Right, ItemRect.Top + SubMenuSize.cy)
     else
@@ -439,7 +440,7 @@ var
       LBitmap.SetSize(SubMenuSize.Width, SubMenuSize.Height);
       LBitmap.Canvas.Brush.Color := clFuchsia;
       LBitmap.Canvas.FillRect(Rect(0, 0, SubMenuSize.Width, SubMenuSize.Height));
-      StyleServices.DrawElement(LBitmap.Canvas.Handle, LSubMenuDetails, Rect(0, 0, SubMenuSize.Width, SubMenuSize.Height));
+      StyleServices.DrawElement(LBitmap.Canvas.Handle, LSubMenuDetails, Rect(0, 0, SubMenuSize.Width, SubMenuSize.Height), nil{$IF (CompilerVersion >=33)}, LPixelsPerInch{$IFEND});
       if RightToLeft then
       begin
         RotateBitmap(LBitmap, DegToRad(180), False, clFuchsia);
@@ -534,6 +535,12 @@ var
 
 
 begin
+  {$IF (CompilerVersion >=33)}
+  if Assigned(Application.Mainform) then
+    LPixelsPerInch := Application.MainForm.Monitor.PixelsPerInch
+  else
+  {$IFEND}
+    LPixelsPerInch := Screen.PixelsPerInch;
   DisplayCheckedGlyph := True;
   ItemRect2 := ItemRect;
   ItemRect2.Top := ItemRect.Top - GetOffset(True); //add offset

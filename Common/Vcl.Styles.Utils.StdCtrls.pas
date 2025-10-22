@@ -14,7 +14,7 @@
 //
 //
 // Portions created by Mahdi Safsafi [SMP3]   e-mail SMP@LIVE.FR
-// Portions created by Rodrigo Ruz V. are Copyright (C) 2013-2021 Rodrigo Ruz V.
+// Portions created by Rodrigo Ruz V. are Copyright (C) 2013-2025 Rodrigo Ruz V.
 // All Rights Reserved.
 //
 // **************************************************************************************************
@@ -272,7 +272,9 @@ end;
 function TSysEditStyleHook.GetBorderSize: TRect;
 begin
   if SysControl.HasBorder then
-    Result := Rect(2, 2, 2, 2);
+    Result := Rect(2, 2, 2, 2)
+   else
+    Result := Rect(0, 0, 0, 0);
 end;
 
 procedure TSysEditStyleHook.MouseEnter;
@@ -997,7 +999,9 @@ end;
 function TSysMemoStyleHook.GetBorderSize: TRect;
 begin
   if SysControl.HasBorder then
-    Result := Rect(2, 2, 2, 2);
+    Result := Rect(2, 2, 2, 2)
+   else
+    Result := Rect(0, 0, 0, 0);
 end;
 
 procedure TSysMemoStyleHook.UpdateColors;

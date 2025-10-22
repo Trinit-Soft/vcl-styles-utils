@@ -13,7 +13,7 @@
 // and limitations under the License.
 //
 // The Initial Developer of the Original Code is Rodrigo Ruz V.
-// Portions created by Rodrigo Ruz V. are Copyright (C) 2014-2021 Rodrigo Ruz V.
+// Portions created by Rodrigo Ruz V. are Copyright (C) 2014-2025 Rodrigo Ruz V.
 // All Rights Reserved.
 //
 // **************************************************************************************************
@@ -212,9 +212,11 @@ begin
       CheckMenuItem(FVCLStylesMenu, LSubMenuIndex, MF_BYPOSITION or MF_CHECKED);
 
     if SameText('Windows', s) then
+    begin
+      inc(LSubMenuIndex);
       AddMenuSeparatorHelper(FVCLStylesMenu, LSubMenuIndex);
+    end;
 
-    inc(LSubMenuIndex);
     inc(uIDNewItem);
     LMethodInfo := TMethodInfo.Create;
     LMethodInfo.Value1 := s;
